@@ -1,0 +1,6 @@
+<button (click)="toPatient()">Patient</button>
+<button (click)="toDoctor()">Doctor</button>
+
+<app-patient *ngIf="patient"></app-patient>
+
+<app-doctor *ngIf="doctor"></app-doctor>

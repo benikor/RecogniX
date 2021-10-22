@@ -5,13 +5,17 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { MainComponent } from './main/main.component';
+import { LoginComponent } from './login/login.component';
+import { PatientComponent } from './patient/patient.component';
+import { DoctorComponent } from './doctor/doctor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
-    MainComponent
+    LoginComponent,
+    PatientComponent,
+    DoctorComponent
   ],
   imports: [
     BrowserModule,
