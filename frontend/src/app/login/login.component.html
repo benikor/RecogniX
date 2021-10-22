@@ -1,6 +1,3 @@
-<button (click)="toPatient()">Patient</button>
-<button (click)="toDoctor()">Doctor</button>
+<a routerLink="/patient"><button>Patient</button></a>
+<a routerLink="/doctor"><button>Doctor</button></a>
 
-<app-patient *ngIf="patient"></app-patient>
-
-<app-doctor *ngIf="doctor"></app-doctor>
