@@ -1,0 +1,59 @@
+body {
+    background-image: url('../../assets/icc.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div.container {
+    width: 100% !important;
+}
+
+#btn-box {
+    position: relative;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+  
+#btn-box img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    
+}
+
+#btn-box .btn1 {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    // transform: translate(-50%, -50%);
+    // -ms-transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    color: rgb(23, 23, 64);
+    font-size: 30px;
+    font-variant: small-caps;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 1px;
+    text-shadow: 2px 2px;
+}
+
+#btn-box .btn2 {
+    position: absolute;
+    top: 50%;
+    right: 30%;
+    // transform: translate(-50%, -50%);
+    // -ms-transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    color: rgb(23, 23, 64);
+    font-size: 30px;
+    font-variant: small-caps;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 1px;
+    text-shadow: 2px 2px;
+}
