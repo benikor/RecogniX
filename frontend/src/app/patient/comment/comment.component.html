@@ -4,11 +4,11 @@
   
       <div  *ngFor="let item of items" class="col-11 card my-2 mx-2">
         <div class="card-body">
-            <h5 class="card-title">Symptom</h5>
+            <h5 class="card-title">{{item.name}}</h5>
             <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
             <form>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">More details</label>
+                    <label for="exampleFormControlTextarea1">{{item.description}}</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
                 <div class="form-group">

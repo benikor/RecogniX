@@ -13,10 +13,10 @@
 
        <div *ngIf="first; then thenBlock else elseBlock"></div>
        <ng-template #thenBlock>
-         <app-choose></app-choose>
+         <app-choose [items]="dataFromServer" (newItemEvent)="updateData($event)"></app-choose>
         </ng-template>
        <ng-template #elseBlock>
-         <app-comment></app-comment>
+         <app-comment [items]="dataToComment"></app-comment>
         </ng-template>
 
         <div class="col-12 p-4 mb-3"><button class="float-right btn-steps" (click)="onClick()">Button</button></div>

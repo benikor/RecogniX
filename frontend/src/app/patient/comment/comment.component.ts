@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-comment',
@@ -7,13 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentComponent implements OnInit {
 
-  items = [
-    1,
-    2,
-    3,
-    4,
-    5
-  ]
+  @Input() items: any;
 
   constructor() { }
 
