@@ -46,11 +46,15 @@ public class AllDataLoader implements CommandLineRunner {
         symptoms.add(new Symptom(2L,"Fatigue",loremIpsum));
         symptoms.add(new Symptom(3L,"Skin redness",loremIpsum));
         symptoms.add(new Symptom(4L,"Pain",loremIpsum));
-        symptoms.add(new Symptom(5L,"Loss of apetite",loremIpsum));
+        symptoms.add(new Symptom(5L,"Loss of appetite",loremIpsum));
         symptoms.add(new Symptom(6L,"Urinary retention",loremIpsum));
+        symptomCrudRepository.saveAll(symptoms);
     }
     private void loadTreatmentData(){
         List<Treatment> treatments = new ArrayList<>();
-        treatments.add(new Treatment(1L));
+        treatments.add(new Treatment(1L,"Take pills","1 x AlgoFlex 400mg, twice daily"));
+        treatments.add(new Treatment(2L,"Rest","Take more rest until it ease"));
+        treatments.add(new Treatment(3L,"Call Ambulance","Call the ambulance immediately!"));
+        treatmentCrudRepository.saveAll(treatments);
     }
 }
