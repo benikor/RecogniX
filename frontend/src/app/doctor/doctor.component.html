@@ -1,1 +1,36 @@
 <p>doctor works!</p>
+<div class="container-fluid w-100 ">
+    <div class="justify-content-center row w-100 py-3 mx-auto">
+        <div class="col-8" id="right">
+            <br>
+            <h1>Treatments</h1>
+  
+            <form action="" method="post">
+                <input type="text" class="mb-3 col-8" name="search" id="search" placeholder="Search for treatments...">
+                <a href="#" class="btn btn-primary pull-right mx-2">Auto-treatment</a>
+                <a href="#" class="btn btn-primary pull-right mx-2">All treatments</a>
+            </form>
+         </div>
+  
+      <div  *ngFor="let item of items" class="box col-11 card my-2 mx-5">
+        <div class="card-body">
+            <h5 class="card-title">Symptom</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+doktor lista kártyák 
+patient name - összefoglalás symptoms - severity - open closed
+
+
+evaluate page:
+patient metadata
+symptoms with comments
+
+search bar mint patientnek - treatmentekkel 
+treatment pack auto treatmentből
+    auto treatment - all gombok
