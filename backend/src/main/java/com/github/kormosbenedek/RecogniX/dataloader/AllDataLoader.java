@@ -26,7 +26,7 @@ public class AllDataLoader implements CommandLineRunner {
     CompletedTreatmentCrudRepository completedTreatmentCrudRepository;
     @Autowired
     AutoTreatmentCrudRepository autoTreatmentCrudRepository;
-    private String loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Magna etiam tempor orci eu lobortis elementum nibh tellus. Quis varius quam quisque id diam vel quam elementum pulvinar. Mauris pellentesque pulvinar pellentesque habitant. Velit sed ullamcorper morbi tincidunt ornare massa eget. Nibh ipsum consequat nisl vel pretium lectus quam id. Accumsan tortor posuere ac ut consequat semper viverra.";
+    private String loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
     public void run(String... args) {
         loadPatientData();
