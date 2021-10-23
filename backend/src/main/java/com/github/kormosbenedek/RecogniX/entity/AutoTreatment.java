@@ -25,8 +25,8 @@ public class AutoTreatment {
     private Integer minimumAge;
     private Integer maximumAge;
 
-    @ManyToOne
-    private Treatment recommendedTreatment;
+    @OneToMany
+    private List<Treatment> recommendedTreatment;
 
     @ManyToOne
     private Treatment notRecommendedTreatment;

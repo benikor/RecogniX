@@ -113,15 +113,18 @@ public class AllDataLoader implements CommandLineRunner {
     private void loadAutoTreatmentData() {
         List<Symptom> symptoms = new ArrayList<>();
         symptoms.add(symptomCrudRepository.findById(1L).orElseThrow());
-        List<AutoTreatment> autoTreatments = new ArrayList<>();
 
+        List<Treatment> treatments = new ArrayList<>();
+        treatments.add(treatmentCrudRepository.findById(1L).orElseThrow());
+
+        List<AutoTreatment> autoTreatments = new ArrayList<>();
         autoTreatments.add(new AutoTreatment(
                 0L,
                 symptoms,
                 null,
                 8,
                 120,
-                treatmentCrudRepository.findById(1L).orElseThrow(),
+                treatments,
                 null));
         autoTreatmentCrudRepository.saveAll(autoTreatments);
     }
