@@ -80,7 +80,7 @@ public class AutoTreatmentService {
 
         AutoTreatment autoTreatment = new AutoTreatment();
         autoTreatment.setSymptoms(symptomList);
-        autoTreatment.setRecommendedTreatment(treatments);
+        autoTreatment.setRecommendedTreatments(treatments);
 
         autoTreatment.setMinimumAge(null);
         autoTreatment.setMaximumAge(null);
