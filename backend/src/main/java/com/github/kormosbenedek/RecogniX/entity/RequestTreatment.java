@@ -19,5 +19,5 @@ public class RequestTreatment {
     @ManyToOne
     private Patient patient;
     @OneToMany
-    private List<SymptomWithComment> symptoms;
+    private List<SymptomWithComment> symptomWithComments;
 }

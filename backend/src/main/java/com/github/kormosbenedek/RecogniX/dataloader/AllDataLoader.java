@@ -21,7 +21,7 @@ public class AllDataLoader implements CommandLineRunner {
     @Autowired
     TreatmentCrudRepository treatmentCrudRepository;
     @Autowired
-    RequestTreatmentCrudRepository requestTreatmentCrudRepository;
+    RequestTreatmentJpaRepository requestTreatmentJpaRepository;
     @Autowired
     CompletedTreatmentCrudRepository completedTreatmentCrudRepository;
     @Autowired
@@ -101,7 +101,7 @@ public class AllDataLoader implements CommandLineRunner {
                 patientCrudRepository.findById(1L).get(),
                 symptomLists.get(2)));
 
-        requestTreatmentCrudRepository.saveAll(requestTreatments);
+        requestTreatmentJpaRepository.saveAll(requestTreatments);
     }
 
 }
