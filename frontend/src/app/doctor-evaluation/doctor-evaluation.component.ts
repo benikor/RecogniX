@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { BackendHandlerService } from '../backend-handler.service';
 
@@ -14,24 +15,33 @@ export class DoctorEvaluationComponent implements OnInit {
   treatmentData: any
 
   constructor(
+    private route: ActivatedRoute,
     private backendHandlerService: BackendHandlerService
   ) { }
 
   ngOnInit(): void {
     this.getPatientById();
     this.getSymptompsById();
-    this.getAutoTreatment();
+    this.getAutoTreatmentById();
   }
 
   getPatientById(): void {
-    this.backendHandlerService.getPatientById().subscribe(patientData => this.patientData = patientData);
+    var id
+    if (id = this.route.snapshot.paramMap.get('id'))
+      this.backendHandlerService.getPatientById(+id).subscribe(patientData => this.patientData = patientData);
   }
 
   getSymptompsById(): void {
-    this.backendHandlerService.getSymptompsById().subscribe(symptomData => this.symptomData = symptomData);
+    var id
+    if (id = this.route.snapshot.paramMap.get('id'))
+      this.backendHandlerService.getSymptompsById(+id).subscribe(symptomData => this.symptomData = symptomData);
   }
 
-  getAutoTreatment(): void {
-    this.backendHandlerService.getAutoTreatment().subscribe(treatmentData => this.treatmentData = treatmentData);
+  getAutoTreatmentById(): void {
+    var id
+    if (id = this.route.snapshot.paramMap.get('id'))
+      this.backendHandlerService.getAutoTreatmentById(+id).subscribe(treatmentData => this.treatmentData = treatmentData);
   }
+
+  
 }

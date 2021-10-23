@@ -37,27 +37,27 @@ export class BackendHandlerService {
      )
   }
 
-  getPatientById(): Observable<any> {
-    return (this.http.get<any>(`${this.backendUrl}/requestTreatment/1/patient`))
+  getPatientById(id: number): Observable<any> {
+    return (this.http.get<any>(`${this.backendUrl}/requestTreatment/${id}/patient`))
     .pipe(
        tap(_ => console.log('fetched PatientById')),
        catchError(this.handleError<any>('getPatientById', []))
      )
   }
 
-  getSymptompsById(): Observable<any> {
-    return (this.http.get<any>(`${this.backendUrl}/requestTreatment/1/symptoms`))
+  getSymptompsById(id: number): Observable<any> {
+    return (this.http.get<any>(`${this.backendUrl}/requestTreatment/${id}/symptoms`))
     .pipe(
        tap(_ => console.log('fetched SymptompsById')),
        catchError(this.handleError<any>('getSymptompsById', []))
      )
   }
 
-  getAutoTreatment(): Observable<any> {
-    return (this.http.get<any>(`${this.backendUrl}/autoTreatment/1`))
+  getAutoTreatmentById(id: number): Observable<any> {
+    return (this.http.get<any>(`${this.backendUrl}/autoTreatment/${id}`))
     .pipe(
        tap(_ => console.log('fetched AutoTreatment')),
-       catchError(this.handleError<any>('getAutoTreatment', []))
+       catchError(this.handleError<any>('getAutoTreatmentById', []))
      )
   }
 
