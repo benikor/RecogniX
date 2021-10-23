@@ -38,6 +38,7 @@ public class AllDataLoader implements CommandLineRunner {
 
     private void loadPatientData() {
         List<Patient> patients = new ArrayList<>();
+        patients.add(new Patient(0L, "Kovacs Facundo", 25));
         patients.add(new Patient(1L, "Teszt Elek", 18));
         patients.add(new Patient(2L, "Dummy Jhon", 55));
         patientCrudRepository.saveAll(patients);
@@ -45,6 +46,7 @@ public class AllDataLoader implements CommandLineRunner {
 
     private void loadSymptomData() {
         List<Symptom> symptoms = new ArrayList<>();
+        symptoms.add(new Symptom(0L, "Fever", loremIpsum,3));
         symptoms.add(new Symptom(1L, "Headache", loremIpsum,2));
         symptoms.add(new Symptom(2L, "Fatigue", loremIpsum,1));
         symptoms.add(new Symptom(3L, "Skin redness", loremIpsum,2));
@@ -55,6 +57,7 @@ public class AllDataLoader implements CommandLineRunner {
     }
     private void loadSymptomWithCommentData() {
         List<SymptomWithComment> symptomWithComments = new ArrayList<>();
+        symptomWithComments.add(new SymptomWithComment(0L,symptomCrudRepository.findById(0L).get(),"comment for fever"));
         symptomWithComments.add(new SymptomWithComment(1L,symptomCrudRepository.findById(1L).get(),"comment for headache"));
         symptomWithComments.add(new SymptomWithComment(2L,symptomCrudRepository.findById(2L).get(),"comment for fatigue"));
         symptomWithComments.add(new SymptomWithComment(3L,symptomCrudRepository.findById(3L).get(),"comment for skin redness"));
@@ -66,6 +69,7 @@ public class AllDataLoader implements CommandLineRunner {
 
     private void loadTreatmentData() {
         List<Treatment> treatments = new ArrayList<>();
+        treatments.add(new Treatment(0L, "Take appointment", "Call your doctor for an appointment"));
         treatments.add(new Treatment(1L, "Take pills", "1 x AlgoFlex 400mg, twice daily"));
         treatments.add(new Treatment(2L, "Rest", "Take more rest until it ease"));
         treatments.add(new Treatment(3L, "Call Ambulance", "Call the ambulance immediately!"));
