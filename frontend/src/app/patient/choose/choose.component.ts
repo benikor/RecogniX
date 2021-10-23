@@ -8,13 +8,30 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ChooseComponent implements OnInit {
 
   @Input() items: any;
+  //@Input() datas: any;
   @Output() newItemEvent = new EventEmitter<any>();
   symptomList = [{id:"", name:"", description:"", severity:""}];
-
-  constructor() { }
+  
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.symptomList.pop();
+     this.symptomList.pop();
+  //   if (this.datas)
+  //     console.log("data: " + this.datas[0])
+  //   /*if (this.datas) {
+  //     this.datas.array.forEach(function (element: any, symptomList: any){
+  //     //symptomList.push(element)
+  //     console.log(element)
+  //   });
+  // }*/
+
+    
+  //   /*this.symptomList.forEach(function (symptom) {
+  //     document.getElementById(symptom.id)?.classList.add("active")
+  //   });*/
+
+  //   console.log("sympoms:" + this.symptomList)
   }
 
   onClick(index: any, item: any) {
@@ -34,7 +51,7 @@ export class ChooseComponent implements OnInit {
       }
       else {
         symptomCard.classList.remove("active")
-        this.symptomList.forEach(function (symptom, i) {
+        this.symptomList.forEach(function (symptom, i: number) {
           if (symptom.id == index)
             symptomToDelete =i
         });

@@ -20,8 +20,9 @@
         </ng-template>
 
         <div class="col-12 p-4 mb-3">
-          <button class="float-left btn-steps" (click)="onClick()">Back</button>
-          <button class="float-right btn-steps" (click)="onClick()">Button</button></div>
+          <button id="back" style="display: none" class="float-left btn-steps" (click)="onClick()">Back</button>
+          <button id="next" class="float-right btn-steps" (click)="onClick()">Next</button>
+          <a routerLink="/patient/main"><button id="submit" style="display: none" class="float-right btn-steps">Submit</button></a></div>
   </div>
 </div>
 
