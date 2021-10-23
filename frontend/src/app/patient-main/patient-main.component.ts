@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientMainComponent implements OnInit {
 
+  items = [
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+  
   constructor() { }
 
   ngOnInit(): void {

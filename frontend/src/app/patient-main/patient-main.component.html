@@ -1,2 +1,28 @@
-<p>patient-main works!</p>
-<a routerLink="/patient/request"><button>Go to Ápolás</button></a>
+<hr>
+<div class="container-fluid w-100 bg-light">
+    <div class="justify-content-center row w-100 py-3 mx-auto">
+   
+        <div routerLink="/doctor/evaluation" *ngFor="let item of items" class="box col-11 card my-2 mx-5">
+        <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th class="col-4">Patient name</th>
+                <th class="col-6">Symptom list</th>
+                <th class="col-2">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>lol</td>
+                <td>lol</td>
+                <td>Waiting...</td>
+              </tr>
+            </tbody>
+          </table>
+            
+        </div>
+        </div>
+    </div>
+  </div>
+<a routerLink="/patient/request"><button class="float-right btn-steps">Go to Ápolás</button></a>
