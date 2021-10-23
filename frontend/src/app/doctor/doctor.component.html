@@ -1,5 +1,4 @@
-<p>doctor works!</p>
-<div class="container-fluid w-100 ">
+<div class="container-fluid w-100 bg-light">
     <div class="justify-content-center row w-100 py-3 mx-auto">
         <div class="col-8" id="right">
             <br>
@@ -11,13 +10,30 @@
                 <a href="#" class="btn btn-primary pull-right mx-2">All treatments</a>
             </form>
          </div>
-  
+
       <div  *ngFor="let item of items" class="box col-11 card my-2 mx-5">
         <div class="card-body">
-            <h5 class="card-title">Symptom</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <table class="table">
+            <thead>
+              <tr>
+                <th class="col-1">#</th>
+                <th class="col-3">Patient name</th>
+                <th class="col-5">Symptom list</th>
+                <th class="col-3">Severity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>lol</td>
+                <td>lol</td>
+                <td>nemtomittmileszmég</td>
+              </tr>
+            </tbody>
+          </table>
             
         </div>
+
       </div>
     </div>
   </div>
