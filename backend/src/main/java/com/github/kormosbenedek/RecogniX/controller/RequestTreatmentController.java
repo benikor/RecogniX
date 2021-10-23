@@ -1,6 +1,7 @@
 package com.github.kormosbenedek.RecogniX.controller;
 
 import com.github.kormosbenedek.RecogniX.entity.RequestTreatment;
+import com.github.kormosbenedek.RecogniX.entity.SymptomWithComment;
 import com.github.kormosbenedek.RecogniX.repositories.PatientCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.RequestTreatmentJpaRepository;
 import com.github.kormosbenedek.RecogniX.repositories.SymptomWithCommentCrudRepository;
@@ -21,6 +22,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/requestTreatment")
@@ -36,8 +40,6 @@ public class RequestTreatmentController {
 
     @PostMapping("")
     public ResponseEntity<RequestTreatment> saveOne(@RequestBody RequestTreatment requestTreatment){
-        requestTreatment.setPatient(patientCrudRepository.findById(
-                requestTreatment.getPatient().getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
 
 
         return new ResponseEntity<>(service.saveOne(requestTreatment), HttpStatus.OK);

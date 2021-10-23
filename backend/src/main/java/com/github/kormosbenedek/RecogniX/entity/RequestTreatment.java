@@ -18,6 +18,6 @@ public class RequestTreatment {
 
     @ManyToOne
     private Patient patient;
-    @OneToMany
+    @ManyToMany
     private List<SymptomWithComment> symptomWithComments;
 }

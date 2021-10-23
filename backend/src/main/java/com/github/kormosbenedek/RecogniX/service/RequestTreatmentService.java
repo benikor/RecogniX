@@ -1,12 +1,17 @@
 package com.github.kormosbenedek.RecogniX.service;
 
 import com.github.kormosbenedek.RecogniX.entity.RequestTreatment;
+import com.github.kormosbenedek.RecogniX.entity.SymptomWithComment;
+import com.github.kormosbenedek.RecogniX.repositories.PatientCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.RequestTreatmentJpaRepository;
+import com.github.kormosbenedek.RecogniX.repositories.SymptomWithCommentCrudRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import com.github.kormosbenedek.RecogniX.dto.RequestTreatmentDto;
 import com.github.kormosbenedek.RecogniX.entity.RequestTreatment;
 import com.github.kormosbenedek.RecogniX.entity.SymptomWithComment;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +21,8 @@ import java.util.List;
 public class RequestTreatmentService {
 
     private final RequestTreatmentJpaRepository repository;
+    private final PatientCrudRepository patientCrudRepository;
+    private final SymptomWithCommentCrudRepository symptomWithCommentCrudRepository;
 
     public List<RequestTreatmentDto> getAll(){
 
@@ -41,6 +48,19 @@ public class RequestTreatmentService {
     return requestTreatmentDtos;
     }
     public RequestTreatment saveOne(RequestTreatment requestTreatment){
+
+        requestTreatment.setPatient(patientCrudRepository.findById(
+                requestTreatment.getPatient().getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+        List<SymptomWithComment> idOnlySymptomlist = requestTreatment.getSymptomWithComments();
+        requestTreatment.setSymptomWithComments(new ArrayList<>());
+
+        List<SymptomWithComment> fullSymptomlist = new ArrayList<>();
+        idOnlySymptomlist.forEach(symptomWithComment -> {
+            fullSymptomlist.add(symptomWithCommentCrudRepository.findById(
+                    symptomWithComment.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+        });
+
+        requestTreatment.setSymptomWithComments(fullSymptomlist);
 
         return repository.save(requestTreatment);
     }
