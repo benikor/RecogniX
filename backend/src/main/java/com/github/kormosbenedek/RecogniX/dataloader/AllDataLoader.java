@@ -1,6 +1,7 @@
 package com.github.kormosbenedek.RecogniX.dataloader;
 
 import com.github.kormosbenedek.RecogniX.entity.*;
+import com.github.kormosbenedek.RecogniX.enums.TreatmentStatus;
 import com.github.kormosbenedek.RecogniX.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -101,17 +102,20 @@ public class AllDataLoader implements CommandLineRunner {
         requestTreatments.add(new RequestTreatment(
                 1L,
                 patientCrudRepository.findById(1L).orElseThrow(),
-                symptomLists.get(0)));
+                symptomLists.get(0),
+                TreatmentStatus.WAITING));
 
         requestTreatments.add(new RequestTreatment(
                 2L,
                 patientCrudRepository.findById(1L).orElseThrow(),
-                symptomLists.get(1)));
+                symptomLists.get(1),
+                TreatmentStatus.WAITING));
 
         requestTreatments.add(new RequestTreatment(
                 3L,
                 patientCrudRepository.findById(1L).orElseThrow(),
-                symptomLists.get(2)));
+                symptomLists.get(2),
+                TreatmentStatus.WAITING));
 
         requestTreatmentJpaRepository.saveAll(requestTreatments);
     }

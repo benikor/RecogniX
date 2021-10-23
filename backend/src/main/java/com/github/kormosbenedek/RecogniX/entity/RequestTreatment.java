@@ -1,5 +1,6 @@
 package com.github.kormosbenedek.RecogniX.entity;
 
+import com.github.kormosbenedek.RecogniX.enums.TreatmentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,4 +21,6 @@ public class RequestTreatment {
     private Patient patient;
     @ManyToMany
     private List<SymptomWithComment> symptomWithComments;
+
+    private TreatmentStatus status;
 }
