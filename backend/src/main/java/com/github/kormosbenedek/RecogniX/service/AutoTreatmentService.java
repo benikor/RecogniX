@@ -49,7 +49,19 @@ public class AutoTreatmentService {
     }
 
     public void generateDraftAutoTreatment(CompletedTreatment completedTreatment){
-        //just map and save the thingies
+
+        List<Symptom> symptomList = completedTreatment.getRequestTreatment().getSymptomWithComments().stream().map(SymptomWithComment::getSymptom).collect(Collectors.toList());
+        List<Treatment> treatments = completedTreatment.getTreatments();
+
+        AutoTreatment autoTreatment = new AutoTreatment();
+        autoTreatment.setSymptoms(symptomList);
+        autoTreatment.setRecommendedTreatment(treatments);
+
+        autoTreatment.setMinimumAge(null);
+        autoTreatment.setMaximumAge(null);
+        autoTreatment.setAntisymptoms(null);
+
+        autoTreatmentRepository.save(autoTreatment);
     }
 
 }
