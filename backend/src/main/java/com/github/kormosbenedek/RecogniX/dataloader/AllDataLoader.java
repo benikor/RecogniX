@@ -34,7 +34,10 @@ public class AllDataLoader implements CommandLineRunner {
         loadSymptomWithCommentData();
         loadTreatmentData();
         loadRequestTreatmentData();
+        loadAutoTreatmentData();
     }
+
+
 
     private void loadPatientData() {
         List<Patient> patients = new ArrayList<>();
@@ -58,12 +61,12 @@ public class AllDataLoader implements CommandLineRunner {
     private void loadSymptomWithCommentData() {
         List<SymptomWithComment> symptomWithComments = new ArrayList<>();
 
-        symptomWithComments.add(new SymptomWithComment(1L,symptomCrudRepository.findById(1L).get(),"comment for headache"));
-        symptomWithComments.add(new SymptomWithComment(2L,symptomCrudRepository.findById(2L).get(),"comment for fatigue"));
-        symptomWithComments.add(new SymptomWithComment(3L,symptomCrudRepository.findById(3L).get(),"comment for skin redness"));
-        symptomWithComments.add(new SymptomWithComment(4L,symptomCrudRepository.findById(4L).get(),"comment for pain"));
-        symptomWithComments.add(new SymptomWithComment(5L,symptomCrudRepository.findById(5L).get(),"comment for loss of appetite"));
-        symptomWithComments.add(new SymptomWithComment(6L,symptomCrudRepository.findById(6L).get(),"comment for urinary retention"));
+        symptomWithComments.add(new SymptomWithComment(1L,symptomCrudRepository.findById(1L).orElseThrow(),"comment for headache"));
+        symptomWithComments.add(new SymptomWithComment(2L,symptomCrudRepository.findById(2L).orElseThrow(),"comment for fatigue"));
+        symptomWithComments.add(new SymptomWithComment(3L,symptomCrudRepository.findById(3L).orElseThrow(),"comment for skin redness"));
+        symptomWithComments.add(new SymptomWithComment(4L,symptomCrudRepository.findById(4L).orElseThrow(),"comment for pain"));
+        symptomWithComments.add(new SymptomWithComment(5L,symptomCrudRepository.findById(5L).orElseThrow(),"comment for loss of appetite"));
+        symptomWithComments.add(new SymptomWithComment(6L,symptomCrudRepository.findById(6L).orElseThrow(),"comment for urinary retention"));
         symptomWithCommentCrudRepository.saveAll(symptomWithComments);
     }
 
@@ -80,32 +83,47 @@ public class AllDataLoader implements CommandLineRunner {
 
         List<List<SymptomWithComment>> symptomLists = new ArrayList<>();
         symptomLists.add(new ArrayList<>());
-        symptomLists.get(0).add(symptomWithCommentCrudRepository.findById(1L).get());
-        symptomLists.get(0).add(symptomWithCommentCrudRepository.findById(3L).get());
+        symptomLists.get(0).add(symptomWithCommentCrudRepository.findById(1L).orElseThrow());
+        symptomLists.get(0).add(symptomWithCommentCrudRepository.findById(3L).orElseThrow());
         symptomLists.add(new ArrayList<>());
-        symptomLists.get(1).add(symptomWithCommentCrudRepository.findById(4L).get());
-        symptomLists.get(1).add(symptomWithCommentCrudRepository.findById(5L).get());
+        symptomLists.get(1).add(symptomWithCommentCrudRepository.findById(4L).orElseThrow());
+        symptomLists.get(1).add(symptomWithCommentCrudRepository.findById(5L).orElseThrow());
         symptomLists.add(new ArrayList<>());
-        symptomLists.get(2).add(symptomWithCommentCrudRepository.findById(6L).get());
+        symptomLists.get(2).add(symptomWithCommentCrudRepository.findById(6L).orElseThrow());
 
         List<RequestTreatment> requestTreatments = new ArrayList<>();
 
         requestTreatments.add(new RequestTreatment(
                 1L,
-                patientCrudRepository.findById(1L).get(),
+                patientCrudRepository.findById(1L).orElseThrow(),
                 symptomLists.get(0)));
 
         requestTreatments.add(new RequestTreatment(
                 2L,
-                patientCrudRepository.findById(1L).get(),
+                patientCrudRepository.findById(1L).orElseThrow(),
                 symptomLists.get(1)));
 
         requestTreatments.add(new RequestTreatment(
                 3L,
-                patientCrudRepository.findById(1L).get(),
+                patientCrudRepository.findById(1L).orElseThrow(),
                 symptomLists.get(2)));
 
         requestTreatmentJpaRepository.saveAll(requestTreatments);
+    }
+    private void loadAutoTreatmentData() {
+        List<Symptom> symptoms = new ArrayList<>();
+        symptoms.add(symptomCrudRepository.findById(1L).orElseThrow());
+        List<AutoTreatment> autoTreatments = new ArrayList<>();
+
+        autoTreatments.add(new AutoTreatment(
+                0L,
+                symptoms,
+                null,
+                8,
+                120,
+                treatmentCrudRepository.findById(1L).orElseThrow(),
+                null));
+        autoTreatmentCrudRepository.saveAll(autoTreatments);
     }
 
 }
