@@ -97,7 +97,7 @@ public class AllDataLoader implements CommandLineRunner {
                 symptomLists.get(1)));
 
         requestTreatments.add(new RequestTreatment(
-                2L,
+                3L,
                 patientCrudRepository.findById(1L).get(),
                 symptomLists.get(2)));
 
