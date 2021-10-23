@@ -1,6 +1,6 @@
 <div class="container-fluid w-100 bg-light">
   <div class="justify-content-center row w-100 p-3">
-      
+
       <div class="col-12 p-4 mb-3"></div>
       <div class="col-10" id="right">
           <h1>Search for symptoms</h1>
@@ -8,49 +8,20 @@
           <form action="" method="post">
               <input type="text" class="form-control mb-3" name="search" id="search" placeholder="Search for symptoms...">
           </form>
+       </div>
 
 
-      <div class="result mt-3"></div>
-  </div>
+       <div *ngIf="first; then thenBlock else elseBlock"></div>
+       <ng-template #thenBlock>
+         <app-choose></app-choose>
+        </ng-template>
+       <ng-template #elseBlock>
+         <app-comment></app-comment>
+        </ng-template>
 
-      <div class="col-3 card mx-5">
-          <div class="card-body">
-              <h5 class="card-title">Symptom</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-      </div>
-      <div class="col-3 card mx-5">
-        
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="col-3 card mx-5">
-      
-      <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-  </div>
-      <p></p>
-  </div>
+      <button (click)="onClick()">Button</button>
+
+</div>
 </div>
 
-<!-- <div class="container bg-light">
-  <div class="row p-3">
-      
-      <div class="col-12 p-4 mb-3"></div>
-      
-      <h1 class="col-12 mt-2 mb-4 text-center">Bootstrap - Navigációs sáv</h1>
-      
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius rhoncus lectus ut blandit. Morbi turpis diam, faucibus in vestibulum in, consectetur vel odio. Sed ultricies dui arcu, vel hendrerit quam rhoncus vel. Fusce semper faucibus augue, vitae facilisis leo tempor ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec mi quam, pretium at fermentum vitae, vestibulum ac turpis. Curabitur convallis imperdiet metus, at luctus erat aliquam nec. Nam condimentum quam ac metus tempor, tempor posuere massa rhoncus. Vestibulum convallis turpis faucibus, sodales ligula et, fringilla nisi. Curabitur lacinia urna dapibus risus elementum maximus. Vivamus vel mauris ipsum. Etiam quis velit tortor. Suspendisse potenti. Proin sed tellus id justo consectetur hendrerit.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius rhoncus lectus ut blandit. Morbi turpis diam, faucibus in vestibulum in, consectetur vel odio. Sed ultricies dui arcu, vel hendrerit quam rhoncus vel. Fusce semper faucibus augue, vitae facilisis leo tempor ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec mi quam, pretium at fermentum vitae, vestibulum ac turpis. Curabitur convallis imperdiet metus, at luctus erat aliquam nec. Nam condimentum quam ac metus tempor, tempor posuere massa rhoncus. Vestibulum convallis turpis faucibus, sodales ligula et, fringilla nisi. Curabitur lacinia urna dapibus risus elementum maximus. Vivamus vel mauris ipsum. Etiam quis velit tortor. Suspendisse potenti. Proin sed tellus id justo consectetur hendrerit.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius rhoncus lectus ut blandit. Morbi turpis diam, faucibus in vestibulum in, consectetur vel odio. Sed ultricies dui arcu, vel hendrerit quam rhoncus vel. Fusce semper faucibus augue, vitae facilisis leo tempor ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec mi quam, pretium at fermentum vitae, vestibulum ac turpis. Curabitur convallis imperdiet metus, at luctus erat aliquam nec. Nam condimentum quam ac metus tempor, tempor posuere massa rhoncus. Vestibulum convallis turpis faucibus, sodales ligula et, fringilla nisi. Curabitur lacinia urna dapibus risus elementum maximus. Vivamus vel mauris ipsum. Etiam quis velit tortor. Suspendisse potenti. Proin sed tellus id justo consectetur hendrerit.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius rhoncus lectus ut blandit. Morbi turpis diam, faucibus in vestibulum in, consectetur vel odio. Sed ultricies dui arcu, vel hendrerit quam rhoncus vel. Fusce semper faucibus augue, vitae facilisis leo tempor ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec mi quam, pretium at fermentum vitae, vestibulum ac turpis. Curabitur convallis imperdiet metus, at luctus erat aliquam nec. Nam condimentum quam ac metus tempor, tempor posuere massa rhoncus. Vestibulum convallis turpis faucibus, sodales ligula et, fringilla nisi. Curabitur lacinia urna dapibus risus elementum maximus. Vivamus vel mauris ipsum. Etiam quis velit tortor. Suspendisse potenti. Proin sed tellus id justo consectetur hendrerit.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius rhoncus lectus ut blandit. Morbi turpis diam, faucibus in vestibulum in, consectetur vel odio. Sed ultricies dui arcu, vel hendrerit quam rhoncus vel. Fusce semper faucibus augue, vitae facilisis leo tempor ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec mi quam, pretium at fermentum vitae, vestibulum ac turpis. Curabitur convallis imperdiet metus, at luctus erat aliquam nec. Nam condimentum quam ac metus tempor, tempor posuere massa rhoncus. Vestibulum convallis turpis faucibus, sodales ligula et, fringilla nisi. Curabitur lacinia urna dapibus risus elementum maximus. Vivamus vel mauris ipsum. Etiam quis velit tortor. Suspendisse potenti. Proin sed tellus id justo consectetur hendrerit.</p>
-  </div>
-</div> -->
+

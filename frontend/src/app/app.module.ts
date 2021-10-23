@@ -8,6 +8,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { LoginComponent } from './login/login.component';
 import { PatientComponent } from './patient/patient.component';
 import { DoctorComponent } from './doctor/doctor.component';
+import { ChooseComponent } from './patient/choose/choose.component';
+import { CommentComponent } from './patient/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { DoctorComponent } from './doctor/doctor.component';
     TopBarComponent,
     LoginComponent,
     PatientComponent,
-    DoctorComponent
+    DoctorComponent,
+    ChooseComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

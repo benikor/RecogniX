@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientComponent implements OnInit {
 
+  first=true
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onClick() {
+    this.first = !this.first;
+  }
 }
