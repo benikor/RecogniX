@@ -19,5 +19,5 @@ public class Symptom {
     private Long id;
     private String name;
     private String description;
-    private byte severity; //higher is more severe
+    private Integer severity; //higher is more severe
 }
