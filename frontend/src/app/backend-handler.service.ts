@@ -22,15 +22,22 @@ export class BackendHandlerService {
 
 
   getSymptomps(): Observable<any> {
-    //return this.dataFromServer
-    return this.http.get<any>(`${this.backendUrl}/autoTreatment/1`)
+    return (this.http.get<any>(`${this.backendUrl}/symptoms`))
     .pipe(
-      tap(_ => console.log('fetched symptomps')),
-      catchError(this.handleError<any>('getSymptomps', []))
-    )
+       tap(_ => console.log('fetched symptomps')),
+       catchError(this.handleError<any>('getSymptomps', []))
+     )
   }
 
-  
+  getRequestTreatment(): Observable<any> {
+    return (this.http.get<any>(`${this.backendUrl}/requestTreatment`))
+    .pipe(
+       tap(_ => console.log('fetched requestTreatment')),
+       catchError(this.handleError<any>('getRequestTreatment', []))
+     )
+  }
+
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

@@ -23,8 +23,7 @@ export class PatientComponent implements OnInit {
   }
 
   getSymptomps(): void {
-    this.backendHandlerService.getSymptomps().subscribe(this.dataFromServer);
-    console.log(this.dataFromServer)
+    this.backendHandlerService.getSymptomps().subscribe(dataFromServer => this.dataFromServer = dataFromServer);
   }
 
 
