@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BackendHandlerService } from '../backend-handler.service';
+
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
@@ -8,116 +10,23 @@ import { Component, OnInit } from '@angular/core';
 export class PatientComponent implements OnInit {
 
   first=true
-  dataFromServer = {
-    "_embedded": {
-        "symptoms": [
-            {
-                "id": 1,
-                "name": "Headache",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "severity": 2,
-                "_links": {
-                    "self": {
-                        "href": "http://localhost:8080/api/symptoms/1"
-                    },
-                    "symptom": {
-                        "href": "http://localhost:8080/api/symptoms/1"
-                    }
-                }
-            },
-            {
-                "id": 2,
-                "name": "Fatigue",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "severity": 1,
-                "_links": {
-                    "self": {
-                        "href": "http://localhost:8080/api/symptoms/2"
-                    },
-                    "symptom": {
-                        "href": "http://localhost:8080/api/symptoms/2"
-                    }
-                }
-            },
-            {
-                "id": 3,
-                "name": "Skin redness",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "severity": 2,
-                "_links": {
-                    "self": {
-                        "href": "http://localhost:8080/api/symptoms/3"
-                    },
-                    "symptom": {
-                        "href": "http://localhost:8080/api/symptoms/3"
-                    }
-                }
-            },
-            {
-                "id": 4,
-                "name": "Pain",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "severity": 3,
-                "_links": {
-                    "self": {
-                        "href": "http://localhost:8080/api/symptoms/4"
-                    },
-                    "symptom": {
-                        "href": "http://localhost:8080/api/symptoms/4"
-                    }
-                }
-            },
-            {
-                "id": 5,
-                "name": "Loss of appetite",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "severity": 3,
-                "_links": {
-                    "self": {
-                        "href": "http://localhost:8080/api/symptoms/5"
-                    },
-                    "symptom": {
-                        "href": "http://localhost:8080/api/symptoms/5"
-                    }
-                }
-            },
-            {
-                "id": 6,
-                "name": "Urinary retention",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "severity": 5,
-                "_links": {
-                    "self": {
-                        "href": "http://localhost:8080/api/symptoms/6"
-                    },
-                    "symptom": {
-                        "href": "http://localhost:8080/api/symptoms/6"
-                    }
-                }
-            }
-        ]
-    },
-    "_links": {
-        "self": {
-            "href": "http://localhost:8080/api/symptoms"
-        },
-        "profile": {
-            "href": "http://localhost:8080/api/profile/symptoms"
-        }
-    },
-    "page": {
-        "size": 20,
-        "totalElements": 6,
-        "totalPages": 1,
-        "number": 0
-    }
-}
+
+  dataFromServer: any
   dataToComment: any
   
-  constructor() { }
+  constructor(
+    private backendHandlerService: BackendHandlerService
+    ) { }
 
   ngOnInit(): void {
+    this.getSymptomps();
   }
+
+  getSymptomps(): void {
+    this.backendHandlerService.getSymptomps().subscribe(this.dataFromServer);
+    console.log(this.dataFromServer)
+  }
+
 
   updateData(itemFromPatient: any) {
     this.dataToComment = itemFromPatient
