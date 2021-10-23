@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-symptoms',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./symptoms.component.scss']
 })
 export class SymptomsComponent implements OnInit {
+
+  @Input() symptoms: any;
 
   constructor() { }
 

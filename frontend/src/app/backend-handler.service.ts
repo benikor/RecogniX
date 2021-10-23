@@ -24,7 +24,7 @@ export class BackendHandlerService {
   getSymptomps(): Observable<any> {
     return (this.http.get<any>(`${this.backendUrl}/symptoms`))
     .pipe(
-       tap(_ => console.log('fetched symptomps')),
+       tap(_ => console.log('fetched Symptomps')),
        catchError(this.handleError<any>('getSymptomps', []))
      )
   }
@@ -32,11 +32,37 @@ export class BackendHandlerService {
   getRequestTreatment(): Observable<any> {
     return (this.http.get<any>(`${this.backendUrl}/requestTreatment`))
     .pipe(
-       tap(_ => console.log('fetched requestTreatment')),
+       tap(_ => console.log('fetched RequestTreatment')),
        catchError(this.handleError<any>('getRequestTreatment', []))
      )
   }
 
+  getPatientById(): Observable<any> {
+    return (this.http.get<any>(`${this.backendUrl}/requestTreatment/1/patient`))
+    .pipe(
+       tap(_ => console.log('fetched PatientById')),
+       catchError(this.handleError<any>('getPatientById', []))
+     )
+  }
+
+  getSymptompsById(): Observable<any> {
+    return (this.http.get<any>(`${this.backendUrl}/requestTreatment/1/symptoms`))
+    .pipe(
+       tap(_ => console.log('fetched SymptompsById')),
+       catchError(this.handleError<any>('getSymptompsById', []))
+     )
+  }
+
+  getAutoTreatment(): Observable<any> {
+    return (this.http.get<any>(`${this.backendUrl}/autoTreatment/1`))
+    .pipe(
+       tap(_ => console.log('fetched AutoTreatment')),
+       catchError(this.handleError<any>('getAutoTreatment', []))
+     )
+  }
+
+
+  
 
   /**
    * Handle Http operation that failed.

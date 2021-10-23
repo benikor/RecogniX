@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-treatments',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./treatments.component.scss']
 })
 export class TreatmentsComponent implements OnInit {
+
+  @Input() treatments: any;
 
   constructor() { }
 

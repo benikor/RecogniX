@@ -1,12 +1,13 @@
 <div class="container-fluid w-100 bg-light">
     <div class="justify-content-center row w-100 p-3">
-        <div class="col-4"><app-patient-data></app-patient-data></div>
-        <div class="col-8"><app-symptoms></app-symptoms></div>
-        
+        <div class="col-4"><app-patient-data [patient]="patientData"></app-patient-data></div>
+        <div class="col-8"><app-symptoms [symptoms]="symptomData"></app-symptoms></div>
     </div>
     <div class="justify-content-center row w-100 p-3">
-        <div class="col-12"><app-treatments></app-treatments>
-        <a routerLink="/doctor"><button class="float-right btn-steps">Submit</button></a></div>
+        <div class="col-12"><app-treatments [treatments]="treatmentData"></app-treatments>
+        <a routerLink="/doctor"><button class="float-right btn-steps">Submit</button></a>
+        <a routerLink="/doctor"><button class="float-left btn-steps">Back</button></a>
+      </div>
     </div>
     <br>
     
