@@ -73,7 +73,7 @@ public class AllDataLoader implements CommandLineRunner {
     private void loadTreatmentData() {
         List<Treatment> treatments = new ArrayList<>();
         treatments.add(new Treatment(0L, "Take appointment", "Call your doctor for an appointment"));
-        treatments.add(new Treatment(1L, "Take pills", "1 x AlgoFlex 400mg, twice daily"));
+        treatments.add(new Treatment(1L, "Take medicine", "1 x AlgoFlex 400mg, twice daily"));
         treatments.add(new Treatment(2L, "Rest", "Take more rest until it ease"));
         treatments.add(new Treatment(3L, "Call Ambulance", "Call the ambulance immediately!"));
         treatmentCrudRepository.saveAll(treatments);

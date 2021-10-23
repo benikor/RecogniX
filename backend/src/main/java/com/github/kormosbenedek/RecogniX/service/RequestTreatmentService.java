@@ -1,5 +1,6 @@
 package com.github.kormosbenedek.RecogniX.service;
 
+import com.github.kormosbenedek.RecogniX.dto.SymptomWithCommentDto;
 import com.github.kormosbenedek.RecogniX.entity.RequestTreatment;
 import com.github.kormosbenedek.RecogniX.entity.SymptomWithComment;
 import com.github.kormosbenedek.RecogniX.repositories.PatientCrudRepository;
@@ -63,5 +64,17 @@ public class RequestTreatmentService {
         requestTreatment.setSymptomWithComments(fullSymptomlist);
 
         return repository.save(requestTreatment);
+    }
+
+    public List<SymptomWithCommentDto> getById(Long id) {
+        List<SymptomWithComment> symptomWithComments = repository.findById(id).orElseThrow().getSymptomWithComments();
+        List<SymptomWithCommentDto> symptomWithCommentDtos = new ArrayList<>();
+        symptomWithComments.forEach(symptomWithComment -> {
+            SymptomWithCommentDto symptomWithCommentDto = new SymptomWithCommentDto();
+            symptomWithCommentDto.setId(symptomWithComment.getId());
+            symptomWithCommentDto.setSymptomName(symptomWithComment.getSymptom().getName());
+            symptomWithCommentDto.setComment(symptomWithComment.getComment());
+        });
+        return symptomWithCommentDtos;
     }
 }
