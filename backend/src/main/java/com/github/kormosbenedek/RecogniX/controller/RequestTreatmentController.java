@@ -44,4 +44,6 @@ public class RequestTreatmentController {
 
         return new ResponseEntity<>(service.saveOne(requestTreatment), HttpStatus.OK);
     }
+
+    //getOne(by id)
 }

@@ -20,6 +20,7 @@ public class CompletedTreatment {
     @OneToMany
     private List<Treatment> treatments;
 
+    private boolean makeAutoTreatment;
     //doctor
     //date
     //treatmentResult

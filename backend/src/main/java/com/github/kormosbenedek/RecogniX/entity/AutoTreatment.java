@@ -24,5 +24,9 @@ public class AutoTreatment {
     private Integer minimumAge;
     private Integer maximumAge;
 
+    @ManyToOne
+    private Treatment recommendedTreatment;
 
+    @ManyToOne
+    private Treatment notRecommendedTreatment;
 }
