@@ -116,21 +116,43 @@ public class AllDataLoader implements CommandLineRunner {
         requestTreatmentJpaRepository.saveAll(requestTreatments);
     }
     private void loadAutoTreatmentData() {
-        List<Symptom> symptoms = new ArrayList<>();
-        symptoms.add(symptomCrudRepository.findById(1L).orElseThrow());
+        List<Symptom> symptoms1 = new ArrayList<>();
+        symptoms1.add(symptomCrudRepository.findById(1L).orElseThrow());
 
-        List<Treatment> treatments = new ArrayList<>();
-        treatments.add(treatmentCrudRepository.findById(1L).orElseThrow());
+        List<Symptom> symptoms2 = new ArrayList<>();
+        symptoms2.add(symptomCrudRepository.findById(6L).orElseThrow());
+
+        List<Treatment> recommendedTreatments1 = new ArrayList<>();
+        recommendedTreatments1.add(treatmentCrudRepository.findById(1L).orElseThrow());
+
+        List<Treatment> recommendedTreatments2 = new ArrayList<>();
+        recommendedTreatments2.add(treatmentCrudRepository.findById(3L).orElseThrow());
+
+        List<Treatment> notRecommendedTreatments1 = new ArrayList<>();
+        notRecommendedTreatments1.add(treatmentCrudRepository.findById(3L).orElseThrow());
+
+        List<Treatment> notRecommendedTreatments2 = new ArrayList<>();
+        notRecommendedTreatments2.add(treatmentCrudRepository.findById(2L).orElseThrow());
 
         List<AutoTreatment> autoTreatments = new ArrayList<>();
         autoTreatments.add(new AutoTreatment(
-                0L,
-                symptoms,
+                1L,
+                symptoms1,
                 null,
                 8,
                 120,
-                treatments,
-                null));
+                recommendedTreatments1,
+                notRecommendedTreatments1));
+
+        autoTreatments.add(new AutoTreatment(
+                2L,
+                symptoms2,
+                null,
+                8,
+                120,
+                recommendedTreatments2,
+                notRecommendedTreatments2
+                ));
         autoTreatmentCrudRepository.saveAll(autoTreatments);
     }
 
