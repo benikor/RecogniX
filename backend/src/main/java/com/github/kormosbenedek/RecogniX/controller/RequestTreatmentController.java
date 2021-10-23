@@ -1,8 +1,8 @@
 package com.github.kormosbenedek.RecogniX.controller;
 
 import com.github.kormosbenedek.RecogniX.dto.SymptomWithCommentDto;
+import com.github.kormosbenedek.RecogniX.entity.Patient;
 import com.github.kormosbenedek.RecogniX.entity.RequestTreatment;
-import com.github.kormosbenedek.RecogniX.entity.SymptomWithComment;
 import com.github.kormosbenedek.RecogniX.repositories.PatientCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.SymptomWithCommentCrudRepository;
 import com.github.kormosbenedek.RecogniX.service.RequestTreatmentService;
@@ -34,8 +34,13 @@ public class RequestTreatmentController {
     }
 
     @GetMapping("/{id}/symptoms")
-    public ResponseEntity<List<SymptomWithCommentDto>> getById(@PathVariable Long id) {
+    public ResponseEntity<List<SymptomWithCommentDto>> getSymptomById(@PathVariable Long id) {
 
-        return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
+        return new ResponseEntity<>(service.getSymptomsWithCommentsDtoById(id), HttpStatus.OK);
+    }
+    @GetMapping("/{id}/patient")
+    public ResponseEntity<Patient> getPatientById(@PathVariable Long id){
+
+        return new ResponseEntity<>(service.getPatientId(id), HttpStatus.OK);
     }
 }
