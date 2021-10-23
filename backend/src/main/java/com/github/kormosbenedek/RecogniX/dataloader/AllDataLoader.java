@@ -57,7 +57,7 @@ public class AllDataLoader implements CommandLineRunner {
     }
     private void loadSymptomWithCommentData() {
         List<SymptomWithComment> symptomWithComments = new ArrayList<>();
-        symptomWithComments.add(new SymptomWithComment(0L,symptomCrudRepository.findById(0L).get(),"comment for fever"));
+
         symptomWithComments.add(new SymptomWithComment(1L,symptomCrudRepository.findById(1L).get(),"comment for headache"));
         symptomWithComments.add(new SymptomWithComment(2L,symptomCrudRepository.findById(2L).get(),"comment for fatigue"));
         symptomWithComments.add(new SymptomWithComment(3L,symptomCrudRepository.findById(3L).get(),"comment for skin redness"));
