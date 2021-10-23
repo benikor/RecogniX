@@ -74,6 +74,7 @@ public class RequestTreatmentService {
             symptomWithCommentDto.setId(symptomWithComment.getId());
             symptomWithCommentDto.setSymptomName(symptomWithComment.getSymptom().getName());
             symptomWithCommentDto.setComment(symptomWithComment.getComment());
+            symptomWithCommentDtos.add(symptomWithCommentDto);
         });
         return symptomWithCommentDtos;
     }
