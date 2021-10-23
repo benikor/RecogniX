@@ -20,5 +20,7 @@ public class Patient {
 
     private String name;
     private Integer age;
-    //allergies
+    private String cancerTreatment;
+    private String allergy;
+
 }
