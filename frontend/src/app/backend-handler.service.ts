@@ -72,12 +72,12 @@ export class BackendHandlerService {
      )
   }
 
-  // addHero(hero: Hero): Observable<any> {
-  //   return this.http.post(this.backendUrl, hero, this.httpOptions).pipe(
-  //     tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
-  //     catchError(this.handleError<any>('addHero'))
-  //   )
-  // }
+  postTreatmentWithId(itemFromComment: any): Observable<any> {
+    return this.http.post<any>(`${this.backendUrl}/requestTreatment/`, itemFromComment, this.httpOptions).pipe(
+      tap(_ => console.log('postTreatmentWithId')),
+      catchError(this.handleError<any>('postTreatmentWithId'))
+    )
+  }
   
 
   /**

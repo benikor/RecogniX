@@ -13,7 +13,8 @@ export class PatientComponent implements OnInit {
 
   dataFromServer: any
   dataToComment: any
-  
+  request: any
+
   constructor(
     private backendHandlerService: BackendHandlerService
     ) { }
@@ -29,6 +30,15 @@ export class PatientComponent implements OnInit {
 
   updateData(itemFromPatient: any) {
     this.dataToComment = itemFromPatient
+  }
+
+  postRequest(itemFromComment: any) {
+    this.backendHandlerService.postTreatmentWithId(itemFromComment)
+    .subscribe(returndata => {
+      console.log(returndata);
+    });
+
+    alert("Success")
   }
 
   onClick() {
@@ -67,14 +77,5 @@ export class PatientComponent implements OnInit {
 
   }
 
-  onSubmint() {
-    console.log("Submit works")
-    
 
-
-    // this.heroService.addHero({name} as Hero)
-    // .subscribe(hero => {
-    //   this.heroes.push(hero);
-    // });
-  }
 }

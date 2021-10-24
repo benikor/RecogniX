@@ -29,28 +29,24 @@ export class CommentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.outData)
-    this.dataTransfer()
-    console.log("Data")
-    console.log(this.outData)
-  }
-
-  dataTransfer() {
     this.outData.symptomWithComments.pop()
-    this.items.array.forEach(function (this: any, element:any) {
-      this.outData.symptomWithComments.push(element.id,"")
-      
-    });
+    for (let item of this.items) {
+      var asd = {"id": item.id,"comment": ""}
+      this.outData.symptomWithComments.push(asd)
+    }
   }
-
 
   inputChanged(id: any, event: any){
     
-    console.log(id + " " + event.target.value)
-
-    this.newItemEvent.emit();
+    this.outData.symptomWithComments.forEach(element => {
+      if (element.id == id)
+       element.comment = event.target.value
+    });
   }
 
+  ngOnDestroy(): void {
 
-
+    this.newItemEvent.emit(this.outData);
+  }
+ 
 }
