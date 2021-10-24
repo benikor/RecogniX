@@ -29,7 +29,7 @@ pipeline {
             sh 'docker buildx create  --driver kubernetes --name builder --node arm64node  --driver-opt replicas=1,nodeselector=kubernetes.io/arch=arm64 --use'
             sh 'docker buildx create --append --driver kubernetes --name builder --node amd64node  --driver-opt replicas=1,nodeselector=kubernetes.io/arch=amd64 --use'
             sh 'docker buildx build -t ${IMAGEREPO}/${BE_IMAGETAG} --platform linux/arm64,linux/amd64 --push backend/. '
-            sh 'sed -i "s/BE_JENKINS_WILL_CHANGE_THIS_WHEN_REDEPLOY_NEEDED_BASED_ON_CHANGE/$(date)/" k8s/recognix_deployment.yaml'
+            sh 'sed -i "s/BE_JENKINS_WILL_CHANGE_THIS_WHEN_REDEPLOY_NEEDED_BASED_ON_CHANGE/$(date)/" deployment/recognix_deployment.yaml'
           }
         }
 
@@ -47,21 +47,21 @@ pipeline {
           }
           steps {
             sh 'docker buildx build -t ${IMAGEREPO}/${FE_IMAGETAG} --platform linux/arm64,linux/amd64 --push frontend/.'
-            sh 'sed -i "s/FE_JENKINS_WILL_CHANGE_THIS_WHEN_REDEPLOY_NEEDED_BASED_ON_CHANGE/$(date)/" k8s/recognix_deployment.yaml'
+            sh 'sed -i "s/FE_JENKINS_WILL_CHANGE_THIS_WHEN_REDEPLOY_NEEDED_BASED_ON_CHANGE/$(date)/" deployment/recognix_deployment.yaml'
           }
         }
 
     stage('deploy ') {
       steps {
         sh '''
-        cp -i deployment/recognix_deployment.yaml k8s/deployment.yaml
-        sed -i "s/BRANCHNAME/${BRANCH_NAME_LC}/" k8s/deployment.yaml
-        sed -i "s/BE_IMAGETAG/${IMAGEREPO}\\/${BE_IMAGETAG}/" k8s/deployment.yaml
-        sed -i "s/FE_IMAGETAG/${IMAGEREPO}\\/${FE_IMAGETAG}/" k8s/deployment.yaml
+        cp -i deployment/recognix_deployment.yaml deployment/deployment.yaml
+        sed -i "s/BRANCHNAME/${BRANCH_NAME_LC}/" deployment/deployment.yaml
+        sed -i "s/BE_IMAGETAG/${IMAGEREPO}\\/${BE_IMAGETAG}/" deployment/deployment.yaml
+        sed -i "s/FE_IMAGETAG/${IMAGEREPO}\\/${FE_IMAGETAG}/" deployment/deployment.yaml
         '''
-        sh 'cat k8s/deployment.yaml'
+        sh 'cat deployment/deployment.yaml'
         container(name: 'kubectl') {
-        sh 'kubectl apply -f k8s/deployment.yaml'
+        sh 'kubectl apply -f deployment/deployment.yaml'
         sh 'kubectl rollout status deployment/birdnoise-be --namespace=birdnoise-${BRANCH_NAME_LC}'
         sh 'kubectl rollout status deployment/birdnoise-fe --namespace=birdnoise-${BRANCH_NAME_LC}'
 
