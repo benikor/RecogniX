@@ -177,6 +177,6 @@ public class AllDataLoader implements CommandLineRunner {
         completedTreatment.setRequestTreatment(requestTreatmentJpaRepository.findById(2L).orElseThrow());
         completedTreatment.setTreatments(treatments);
         completedTreatment.setMakeAutoTreatment(false);
-
+        completedTreatmentCrudRepository.save(completedTreatment);
     }
 }
