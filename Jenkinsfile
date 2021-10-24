@@ -10,17 +10,6 @@ pipeline {
   stages {
 
         stage('build backend image') {
-          when {
-            anyOf {
-              changeset 'backend/**'
-              expression {
-                image_id = sh (script: "docker images -q ${IMAGEREPO}/${BE_IMAGETAG}", returnStdout: true).trim()
-                if (image_id.isEmpty()) return true
-              }
-
-            }
-
-          }
           steps {
             container(name:'maven'){
                sh 'mvn -B -DskipTests -f backend/pom.xml clean package install'
@@ -33,17 +22,6 @@ pipeline {
         }
 
         stage('build frontend image') {
-          when {
-            anyOf {
-              changeset 'frontend/**'
-              expression {
-                image_id = sh (script: "docker images -q ${IMAGEREPO}/${FE_IMAGETAG}", returnStdout: true).trim()
-                if (image_id.isEmpty()) return true
-              }
-
-            }
-
-          }
           steps {
             sh 'cp frontend/src/environments/environment.deploy.ts frontend/src/environments/environment.ts'
             sh 'docker buildx build -t ${IMAGEREPO}/${FE_IMAGETAG} --platform linux/amd64 --push frontend/.'
