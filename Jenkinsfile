@@ -26,9 +26,8 @@ pipeline {
                sh 'mvn -B -DskipTests -f backend/pom.xml clean package install'
 
                 }
-            sh 'docker buildx create  --driver kubernetes --name builder --node arm64node  --driver-opt replicas=1,nodeselector=kubernetes.io/arch=arm64 --use'
             sh 'docker buildx create --append --driver kubernetes --name builder --node amd64node  --driver-opt replicas=1,nodeselector=kubernetes.io/arch=amd64 --use'
-            sh 'docker buildx build -t ${IMAGEREPO}/${BE_IMAGETAG} --platform linux/arm64,linux/amd64 --push backend/. '
+            sh 'docker buildx build -t ${IMAGEREPO}/${BE_IMAGETAG} --platform linux/amd64 --push backend/. '
             sh 'sed -i "s/BE_JENKINS_WILL_CHANGE_THIS_WHEN_REDEPLOY_NEEDED_BASED_ON_CHANGE/$(date)/" deployment/recognix_deployment.yaml'
           }
         }
@@ -46,7 +45,7 @@ pipeline {
 
           }
           steps {
-            sh 'docker buildx build -t ${IMAGEREPO}/${FE_IMAGETAG} --platform linux/arm64,linux/amd64 --push frontend/.'
+            sh 'docker buildx build -t ${IMAGEREPO}/${FE_IMAGETAG} --platform linux/amd64 --push frontend/.'
             sh 'sed -i "s/FE_JENKINS_WILL_CHANGE_THIS_WHEN_REDEPLOY_NEEDED_BASED_ON_CHANGE/$(date)/" deployment/recognix_deployment.yaml'
           }
         }

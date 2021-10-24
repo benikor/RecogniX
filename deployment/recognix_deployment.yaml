@@ -53,6 +53,8 @@ spec:
     spec:
       containers:
         - name: backend
+          nodeSelector:
+            kubernetes.io/arch: amd64
           image: BE_IMAGETAG
           imagePullPolicy: Always
           env:
@@ -112,6 +114,8 @@ spec:
     spec:
       containers:
         - name: frontend
+          nodeSelector:
+            kubernetes.io/arch: amd64
           image: FE_IMAGETAG
           imagePullPolicy: Always
           env:
