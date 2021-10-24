@@ -61,9 +61,8 @@ pipeline {
         '''
         sh 'cat deployment/deployment.yaml'
         container(name: 'kubectl') {
+        sh 'kubectl delete -d deployment/deployment.yaml'
         sh 'kubectl apply -f deployment/deployment.yaml'
-        sh 'kubectl rollout restart deployment/recognix-be --namespace=recognix-${BRANCH_NAME_LC}'
-        sh 'kubectl rollout restart deployment/recognix-fe --namespace=recognix-${BRANCH_NAME_LC}'
         sh 'kubectl rollout status deployment/recognix-be --namespace=recognix-${BRANCH_NAME_LC}'
         sh 'kubectl rollout status deployment/recognix-fe --namespace=recognix-${BRANCH_NAME_LC}'
 
