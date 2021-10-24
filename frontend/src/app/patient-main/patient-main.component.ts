@@ -16,11 +16,11 @@ export class PatientMainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getRequestTreatmentByPatientId();
+    this.getRequestPatientTreatmentById();
   }
 
-  getRequestTreatmentByPatientId(): void {
-    this.backendHandlerService.getRequestTreatmentByPatientId(1).subscribe(items => this.items = items);
+  getRequestPatientTreatmentById(): void {
+    this.backendHandlerService.getRequestPatientTreatmentById(1).subscribe(items => this.items = items);
   }
 
 }

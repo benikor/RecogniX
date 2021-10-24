@@ -38,15 +38,13 @@ export class BackendHandlerService {
      )
   }
 
-  getRequestTreatmentByPatientId(id: number): Observable<any> {
+  getRequestPatientTreatmentById(id: number): Observable<any> {
     return (this.http.get<any>(`${this.backendUrl}/requestTreatment/patientId/${id}`))
     .pipe(
-       tap(_ => console.log('fetched RequestTreatmentByPatientId')),
-       catchError(this.handleError<any>('getRequestTreatmentByPatientId', []))
+       tap(_ => console.log('fetched RequestPatientTreatmentById')),
+       catchError(this.handleError<any>('getRequestPatientTreatmentById', []))
      )
   }
-
-
 
   getPatientById(id: number): Observable<any> {
     return (this.http.get<any>(`${this.backendUrl}/requestTreatment/${id}/patient`))
@@ -71,6 +69,19 @@ export class BackendHandlerService {
        catchError(this.handleError<any>('getAutoTreatmentById', []))
      )
   }
+
+  getRequestTreatmentByPatientId(id: number): Observable<any> {
+    return (this.http.get<any>(`${this.backendUrl}/requestTreatment/${id}/treatments`))
+    .pipe(
+       tap(_ => console.log('fetched RequestTreatmentByPatientId')),
+       catchError(this.handleError<any>('getRequestTreatmentByPatientId', []))
+     )
+  }
+
+
+
+
+
 
   postTreatmentWithId(itemFromComment: any): Observable<any> {
     return this.http.post<any>(`${this.backendUrl}/requestTreatment/`, itemFromComment, this.httpOptions).pipe(
