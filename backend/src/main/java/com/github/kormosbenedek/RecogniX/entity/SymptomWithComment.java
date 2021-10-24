@@ -19,4 +19,8 @@ public class SymptomWithComment {
 
     private String comment;
 
+    public SymptomWithComment(Symptom symptom, String comment) {
+        this.setSymptom(symptom);
+        this.setComment(comment);
+    }
 }

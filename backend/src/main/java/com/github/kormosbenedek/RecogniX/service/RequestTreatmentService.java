@@ -5,6 +5,7 @@ import com.github.kormosbenedek.RecogniX.entity.*;
 import com.github.kormosbenedek.RecogniX.repositories.CompletedTreatmentCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.PatientCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.RequestTreatmentJpaRepository;
+import com.github.kormosbenedek.RecogniX.repositories.SymptomCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.SymptomWithCommentCrudRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,7 @@ public class RequestTreatmentService {
     private final PatientCrudRepository patientCrudRepository;
     private final SymptomWithCommentCrudRepository symptomWithCommentCrudRepository;
     private final CompletedTreatmentCrudRepository completedTreatmentCrudRepository;
+    private final SymptomCrudRepository symptomCrudRepository;
 
     public List<RequestTreatmentDto> getAll(){
 
@@ -59,12 +61,12 @@ public class RequestTreatmentService {
 
         List<SymptomWithComment> fullSymptomlist = new ArrayList<>();
         idOnlySymptomlist.forEach(symptomWithComment -> {
-            fullSymptomlist.add(symptomWithCommentCrudRepository.findById(
-                    symptomWithComment.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+            Symptom symptom = symptomCrudRepository.findById(symptomWithComment.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+            fullSymptomlist.add(new SymptomWithComment(symptom, symptomWithComment.getComment()));
         });
 
         requestTreatment.setSymptomWithComments(fullSymptomlist);
-
+        symptomWithCommentCrudRepository.saveAll(requestTreatment.getSymptomWithComments());
         return repository.save(requestTreatment);
     }
 
