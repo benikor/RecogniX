@@ -13,6 +13,7 @@ export class DoctorEvaluationComponent implements OnInit {
   patientData: any
   symptomData: any
   treatmentData: any
+  request: any
 
   constructor(
     private route: ActivatedRoute,
@@ -43,8 +44,22 @@ export class DoctorEvaluationComponent implements OnInit {
       this.backendHandlerService.getAutoTreatmentById(+id).subscribe(treatmentData => this.treatmentData = treatmentData);
   }
 
+  updateData(itemFromComment: any) {
+    this.request=itemFromComment
+  }
+
   onClick() {
     console.log("Button clicked")
   }
 
+
+  onSubmit() {
+    //console.log(this.request)
+
+    this.backendHandlerService.postCompletedTreatment(this.request)
+    .subscribe(returndata => {
+      console.log(returndata);
+    });
+
+  }
 }

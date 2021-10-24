@@ -38,7 +38,7 @@ export class PatientComponent implements OnInit {
       console.log(returndata);
     });
 
-    alert("Success")
+    alert("Doctor works!")
   }
 
   onClick() {

@@ -80,15 +80,20 @@ export class BackendHandlerService {
 
 
 
-
-
-
   postTreatmentWithId(itemFromComment: any): Observable<any> {
     return this.http.post<any>(`${this.backendUrl}/requestTreatment/`, itemFromComment, this.httpOptions).pipe(
       tap(_ => console.log('postTreatmentWithId')),
       catchError(this.handleError<any>('postTreatmentWithId'))
     )
   }
+  
+  postCompletedTreatment(itemFromComment: any): Observable<any> {
+    return this.http.post<any>(`${this.backendUrl}/completedTreatment`, itemFromComment, this.httpOptions).pipe(
+      tap(_ => console.log('postCompletedTreatment')),
+      catchError(this.handleError<any>('postCompletedTreatment'))
+    )
+  }
+
   
 
   /**

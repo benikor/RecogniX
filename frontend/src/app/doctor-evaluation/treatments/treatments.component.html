@@ -15,11 +15,11 @@
         <div *ngFor="let treatment of treatments" [ngClass]="treatment.recommendation" class="box col-3 card my-2 mx-4">
             <div class="col-12 card-body">
                 
-                <input class="form-control form-control-lg" type="text" value={{treatment.name}}>
-                <textarea class="form-control" id=treatment-details rows="1">{{treatment.description}}</textarea>
+                <p id="{{treatment.id}}-name" class="form-control form-control-lg" type="text" >{{treatment.name}}</p>
+                <textarea id="{{treatment.id}}-description" class="form-control treatment-details" rows="1">{{treatment.description}}</textarea>
                 <br>
                 <div class="text-center col-12 p-4">
-                    <button id="choose" class="btn-steps">Add</button>
+                    <button id="{{treatment.id}}-choose" class="btn-steps" (click)="onClick(treatment.id, $event.target)">Add</button>
                 </div>
             </div>
         </div>

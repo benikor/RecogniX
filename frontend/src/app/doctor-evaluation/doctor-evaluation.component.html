@@ -4,7 +4,7 @@
         <div class="col-8"><app-symptoms [symptoms]="symptomData"></app-symptoms></div>
     </div>
     <div class="justify-content-center row w-100 p-3">
-        <div class="col-12"><app-treatments [treatments]="treatmentData"></app-treatments>
+        <div class="col-12"><app-treatments [treatments]="treatmentData"  (newItemEvent)="updateData($event)"></app-treatments>
             <div class="col-12">
                 <div class="ml-4 custom-control custom-switch">
                   <div class="form-check-input">
@@ -15,7 +15,7 @@
                   <div class="col-12"><br><br></div>
             </div>
 
-        <a routerLink="/doctor"><button class="float-right btn-steps">Submit</button></a>
+        <a routerLink="/doctor"><button class="float-right btn-steps" (click)="onSubmit()">Submit</button></a>
         <button class="float-right btn-steps mr-3" (click)="onClick()">New Treatment</button>
         <a routerLink="/doctor"><button class="float-left btn-steps">Back</button></a>
         
