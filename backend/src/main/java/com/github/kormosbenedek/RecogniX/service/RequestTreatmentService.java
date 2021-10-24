@@ -88,6 +88,8 @@ public class RequestTreatmentService {
     }
 
     public List<Treatment> getTreatmentsById(Long id) {
-        return completedTreatmentCrudRepository.findById(id).orElseThrow().getTreatments();
+        RequestTreatment requestTreatment = repository.findById(id).orElseThrow();
+        Long completedTreatmentId = completedTreatmentCrudRepository.findByRequestTreatment(requestTreatment).getId();
+        return completedTreatmentCrudRepository.findById(completedTreatmentId).orElseThrow().getTreatments();
     }
 }
