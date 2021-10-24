@@ -51,10 +51,10 @@ spec:
         type: backend
         service: recognix
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: backend
-          nodeSelector:
-            kubernetes.io/arch: amd64
           image: BE_IMAGETAG
           imagePullPolicy: Always
           env:
@@ -112,6 +112,8 @@ spec:
         type: frontend
         service: recognix
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
         - name: frontend
           nodeSelector:
