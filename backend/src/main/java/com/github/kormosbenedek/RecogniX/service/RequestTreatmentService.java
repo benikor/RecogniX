@@ -42,6 +42,7 @@ public class RequestTreatmentService {
             }
             requestTreatmentDto.setSymptomNames(patientSymptomNames.toString());
             requestTreatmentDto.setSeverityScore(patientSymptomSeverity);
+            requestTreatmentDto.setStatus(requestTreatment.getStatus());
             requestTreatmentDtos.add(requestTreatmentDto);
         });
 
