@@ -2,6 +2,7 @@ package com.github.kormosbenedek.RecogniX.service;
 
 import com.github.kormosbenedek.RecogniX.dto.SymptomWithCommentDto;
 import com.github.kormosbenedek.RecogniX.entity.*;
+import com.github.kormosbenedek.RecogniX.enums.TreatmentStatus;
 import com.github.kormosbenedek.RecogniX.repositories.CompletedTreatmentCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.PatientCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.RequestTreatmentJpaRepository;
@@ -67,6 +68,7 @@ public class RequestTreatmentService {
 
         requestTreatment.setSymptomWithComments(fullSymptomlist);
         symptomWithCommentCrudRepository.saveAll(requestTreatment.getSymptomWithComments());
+        requestTreatment.setStatus(TreatmentStatus.WAITING);
         return repository.save(requestTreatment);
     }
 

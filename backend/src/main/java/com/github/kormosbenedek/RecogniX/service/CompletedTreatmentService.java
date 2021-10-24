@@ -2,6 +2,7 @@ package com.github.kormosbenedek.RecogniX.service;
 
 import com.github.kormosbenedek.RecogniX.entity.CompletedTreatment;
 import com.github.kormosbenedek.RecogniX.entity.Treatment;
+import com.github.kormosbenedek.RecogniX.enums.TreatmentStatus;
 import com.github.kormosbenedek.RecogniX.repositories.CompletedTreatmentCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.RequestTreatmentJpaRepository;
 import com.github.kormosbenedek.RecogniX.repositories.TreatmentCrudRepository;
@@ -31,6 +32,10 @@ public class CompletedTreatmentService {
         });
         completedTreatment.setTreatments(treatments);
         treatmentCrudRepository.saveAll(treatments);
+
+        //set requestStatus
+        completedTreatment.getRequestTreatment().setStatus(TreatmentStatus.DONE);
+       requestTreatmentJpaRepository.save(completedTreatment.getRequestTreatment());
         if (completedTreatment.isMakeAutoTreatment()) {
             autoTreatmentService.generateDraftAutoTreatment(completedTreatment);
         }
