@@ -12,6 +12,9 @@ export class TreatmentsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    
+    //{{treatment.recommendation}}
   }
 
 }
