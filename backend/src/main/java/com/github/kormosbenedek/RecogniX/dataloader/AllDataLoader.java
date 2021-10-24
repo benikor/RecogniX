@@ -106,13 +106,13 @@ public class AllDataLoader implements CommandLineRunner {
 
         requestTreatments.add(new RequestTreatment(
                 2L,
-                patientCrudRepository.findById(1L).orElseThrow(),
+                patientCrudRepository.findById(2L).orElseThrow(),
                 symptomLists.get(1),
                 TreatmentStatus.WAITING));
 
         requestTreatments.add(new RequestTreatment(
                 3L,
-                patientCrudRepository.findById(1L).orElseThrow(),
+                patientCrudRepository.findById(3L).orElseThrow(),
                 symptomLists.get(2),
                 TreatmentStatus.WAITING));
 
