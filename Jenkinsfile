@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      yamlFile 'k8s/agents/jenkins-agent-allinone.yaml'
+      yamlFile 'deployment/agents/jenkins-agent-allinone.yaml'
       defaultContainer 'docker'
       //idleMinutes 60
     }
