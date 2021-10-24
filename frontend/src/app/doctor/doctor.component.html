@@ -1,7 +1,7 @@
 <hr>
 <div class="container-fluid w-100 bg-white">
     <div class="justify-content-center row w-100 py-3 mx-auto">
-   
+        <h1>Your patients' requests</h1>
         <div routerLink="/doctor/evaluation/{{item.id}}" *ngFor="let item of items" class="box col-11 card my-2 mx-5">
         <div class="card-body">
         <table class="table">
@@ -9,8 +9,8 @@
               <tr>
                 <th class="col-1">#</th>
                 <th class="col-3">Patient name</th>
-                <th class="col-5">Symptom list</th>
-                <th class="col-3">Severity</th>
+                <th class="col-6">Symptom list</th>
+                <th class="col-2">Severity</th>
               </tr>
             </thead>
             <tbody>
