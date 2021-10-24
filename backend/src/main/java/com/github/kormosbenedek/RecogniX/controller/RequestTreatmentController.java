@@ -49,4 +49,8 @@ public class RequestTreatmentController {
 
         return new ResponseEntity<>(service.getTreatmentsById(id), HttpStatus.OK);
     }
+    @GetMapping("/patientId/{patientId}")
+    public ResponseEntity<List<RequestTreatmentDto>> getAllByPatientId(@PathVariable Long patientId){
+        return new ResponseEntity<>(service.getAllByPatientId(patientId), HttpStatus.OK);
+    }
 }

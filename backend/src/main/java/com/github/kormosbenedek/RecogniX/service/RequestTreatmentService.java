@@ -92,4 +92,28 @@ public class RequestTreatmentService {
         Long completedTreatmentId = completedTreatmentCrudRepository.findByRequestTreatment(requestTreatment).getId();
         return completedTreatmentCrudRepository.findById(completedTreatmentId).orElseThrow().getTreatments();
     }
+
+    public List<RequestTreatmentDto> getAllByPatientId(Long patientId) {
+        Patient patient = patientCrudRepository.findById(patientId).orElseThrow();
+        List<RequestTreatment> requestTreatments = repository.findAllByPatient(patient);
+        List<RequestTreatmentDto> requestTreatmentDtos = new ArrayList<>();
+
+        requestTreatments.forEach(requestTreatment -> {
+            RequestTreatmentDto requestTreatmentDto = new RequestTreatmentDto();
+            requestTreatmentDto.setId(requestTreatment.getId());
+            requestTreatmentDto.setPatientName(requestTreatment.getPatient().getName());
+            StringBuilder patientSymptomNames = new StringBuilder();
+            Integer patientSymptomSeverity = 0;
+
+            for (SymptomWithComment symptomWithComment : requestTreatment.getSymptomWithComments()) {
+                patientSymptomNames.append(symptomWithComment.getSymptom().getName()).append(", ");
+                patientSymptomSeverity += symptomWithComment.getSymptom().getSeverity();
+            }
+            requestTreatmentDto.setSymptomNames(patientSymptomNames.toString());
+            requestTreatmentDto.setSeverityScore(patientSymptomSeverity);
+            requestTreatmentDto.setStatus(requestTreatment.getStatus());
+            requestTreatmentDtos.add(requestTreatmentDto);
+        });
+        return requestTreatmentDtos;
+    }
 }
