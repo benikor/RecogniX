@@ -121,8 +121,7 @@ spec:
           env:
             - name: REDEPLOY_FLAG
               value: "FE_JENKINS_WILL_CHANGE_THIS_WHEN_REDEPLOY_NEEDED_BASED_ON_CHANGE"
-            - name: BACKEND_URL
-              value: recognix-svc-be/api
+
 
 ---
 
