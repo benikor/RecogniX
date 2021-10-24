@@ -2,7 +2,7 @@
 <div class="container-fluid w-100 bg-white">
     <div class="justify-content-center row w-100 py-3 mx-auto">
         <h1>Your patients' requests</h1>
-        <div routerLink="/doctor/evaluation/{{item.id}}" *ngFor="let item of items" class="box col-11 card my-2 mx-5">
+        <div routerLink="/doctor/evaluation/{{item.id}}" *ngFor="let item of items" ngClass="{{item.status}}" class="box col-11 card my-2 mx-5">
         <div class="card-body">
         <table class="table">
             <thead>
