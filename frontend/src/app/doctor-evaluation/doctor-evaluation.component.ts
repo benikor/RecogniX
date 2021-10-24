@@ -43,5 +43,8 @@ export class DoctorEvaluationComponent implements OnInit {
       this.backendHandlerService.getAutoTreatmentById(+id).subscribe(treatmentData => this.treatmentData = treatmentData);
   }
 
-  
+  onClick() {
+    console.log("Button clicked")
+  }
+
 }

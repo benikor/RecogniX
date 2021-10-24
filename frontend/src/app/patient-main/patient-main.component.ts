@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BackendHandlerService } from '../backend-handler.service';
+
 @Component({
   selector: 'app-patient-main',
   templateUrl: './patient-main.component.html',
@@ -7,17 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientMainComponent implements OnInit {
 
-  items = [
-    1,
-    2,
-    3,
-    4,
-    5
-  ]
+  items: any
   
-  constructor() { }
+  constructor(
+    private backendHandlerService: BackendHandlerService
+  ) {}
 
   ngOnInit(): void {
+    this.getRequestTreatment();
+  }
+
+  getRequestTreatment(): void {
+    this.backendHandlerService.getRequestTreatment().subscribe(items => this.items = items);
   }
 
 }

@@ -4,6 +4,7 @@ import { DoctorEvaluationComponent } from './doctor-evaluation/doctor-evaluation
 import { DoctorComponent } from './doctor/doctor.component';
 import { LoginComponent } from './login/login.component';
 import { PatientMainComponent } from './patient-main/patient-main.component';
+import { PatientTreatmentsComponent } from './patient-treatments/patient-treatments.component';
 import { PatientComponent } from './patient/patient.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'patient/main', component: PatientMainComponent},
   { path: 'patient/request', component: PatientComponent },
+  { path: 'patient/treatment/:id', component: PatientTreatmentsComponent},
   { path: 'doctor', component: DoctorComponent },
   { path: 'doctor/evaluation/:id', component: DoctorEvaluationComponent},
 ];

@@ -16,6 +16,7 @@ import { DoctorEvaluationComponent } from './doctor-evaluation/doctor-evaluation
 import { PatientDataComponent } from './doctor-evaluation/patient-data/patient-data.component';
 import { SymptomsComponent } from './doctor-evaluation/symptoms/symptoms.component';
 import { TreatmentsComponent } from './doctor-evaluation/treatments/treatments.component';
+import { PatientTreatmentsComponent } from './patient-treatments/patient-treatments.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TreatmentsComponent } from './doctor-evaluation/treatments/treatments.c
     DoctorEvaluationComponent,
     PatientDataComponent,
     SymptomsComponent,
-    TreatmentsComponent
+    TreatmentsComponent,
+    PatientTreatmentsComponent
   ],
   imports: [
     BrowserModule,

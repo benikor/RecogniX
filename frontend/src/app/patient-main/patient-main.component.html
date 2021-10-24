@@ -2,7 +2,7 @@
 <div class="container-fluid w-100 bg-light">
     <div class="justify-content-center row w-100 py-3 mx-auto">
    
-        <div *ngFor="let item of items" class="box col-11 card my-2 mx-5">
+        <div routerLink="/patient/treatment/{{item.id}}" *ngFor="let item of items" class="box col-11 card my-2 mx-5">
         <div class="card-body">
         <table class="table">
             <thead>
@@ -14,9 +14,9 @@
             </thead>
             <tbody>
               <tr>
-                <td>lol</td>
-                <td>lol</td>
-                <td>Waiting...</td>
+                <td>{{item.patientName}}</td>
+                <td>{{item.symptomNames}}</td>
+                <td>item.status</td>
               </tr>
             </tbody>
           </table>
