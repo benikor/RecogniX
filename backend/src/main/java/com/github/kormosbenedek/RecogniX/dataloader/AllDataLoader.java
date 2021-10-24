@@ -42,12 +42,11 @@ public class AllDataLoader implements CommandLineRunner {
 
     private void loadPatientData() {
         List<Patient> patients = new ArrayList<>();
-        patients.add(new Patient(0L, "Kovacs Facundo", 25,"Chemotherapy for small cell lung cancer", "none"));
         patients.add(new Patient(1L, "Teszt Elek", 18,"Radiation therapy for small cell prostate cancer","Aspirin"));
         patients.add(new Patient(2L, "Dummy Jhon", 55,"Radiation therapy for non-small cell lung cancer","none"));
+        patients.add(new Patient(3L, "Takeshi Kovacs", 25,"Chemotherapy for small cell lung cancer", "none"));
         patientCrudRepository.saveAll(patients);
     }
-
     private void loadSymptomData() {
         List<Symptom> symptoms = new ArrayList<>();
         symptoms.add(new Symptom(0L, "Fever", loremIpsum,3));
