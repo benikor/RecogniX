@@ -1,9 +1,7 @@
 <hr>
 <div class="container-fluid w-100 bg-light">
     <div class="justify-content-center row w-100 py-3 mx-auto">
-        <div class=col-12>
-        <a routerLink="/patient/request"><button class="float-left btn-steps">New request treatment</button></a>
-    </div>
+        
       <h1>Your treatment requests</h1>
         <div routerLink="/patient/treatment/{{item.id}}" *ngFor="let item of items" class="box col-11 card my-2 mx-5">
         <div class="card-body">
@@ -26,7 +24,10 @@
             
         </div>
         </div>
+        <div class=col-12>
+            <br>
+            <a routerLink="/patient/request/{{item.id}}"><button class="float-right btn-steps">New request treatment</button></a>
+        </div>
     </div>
   </div>
-<a routerLink="/patient/request/{{items[1].id}}"><button class="float-right btn-steps">Go to Ápolás</button></a>
 
