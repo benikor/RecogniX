@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class BackendHandlerService {
 
-  private backendUrl =  environment.API_URL;  // URL to web api
+  private backendUrl =  environment.BACKEND_URL;  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

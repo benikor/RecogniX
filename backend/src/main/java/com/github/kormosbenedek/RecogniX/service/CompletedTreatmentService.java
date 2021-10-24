@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 public class CompletedTreatmentService {
         private final AutoTreatmentService autoTreatmentService;
     public void complete(CompletedTreatment completedTreatment){
-
-        autoTreatmentService.generateDraftAutoTreatment(completedTreatment);
+        if (completedTreatment.isMakeAutoTreatment()){
+        autoTreatmentService.generateDraftAutoTreatment(completedTreatment);}
 
         //NOTTODO save
     }
