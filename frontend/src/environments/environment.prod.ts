@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
+  production: false,
   BACKEND_URL: 'http://recognix-svc-be/api'
 };
