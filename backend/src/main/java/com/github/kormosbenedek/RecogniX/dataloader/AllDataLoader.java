@@ -35,8 +35,10 @@ public class AllDataLoader implements CommandLineRunner {
         loadSymptomWithCommentData();
         loadTreatmentData();
         loadRequestTreatmentData();
+        loadCompletedTreatmentData();
         loadAutoTreatmentData();
     }
+
 
 
 
@@ -106,12 +108,18 @@ public class AllDataLoader implements CommandLineRunner {
 
         requestTreatments.add(new RequestTreatment(
                 2L,
+                patientCrudRepository.findById(1L).orElseThrow(),
+                symptomLists.get(0),
+                TreatmentStatus.DONE));
+
+        requestTreatments.add(new RequestTreatment(
+                3L,
                 patientCrudRepository.findById(2L).orElseThrow(),
                 symptomLists.get(1),
                 TreatmentStatus.WAITING));
 
         requestTreatments.add(new RequestTreatment(
-                3L,
+                4L,
                 patientCrudRepository.findById(3L).orElseThrow(),
                 symptomLists.get(2),
                 TreatmentStatus.WAITING));
@@ -158,5 +166,17 @@ public class AllDataLoader implements CommandLineRunner {
                 ));
         autoTreatmentCrudRepository.saveAll(autoTreatments);
     }
+    private void loadCompletedTreatmentData() {
+        List<Treatment> treatments = new ArrayList<>();
+        treatments.add(treatmentCrudRepository.findById(4L).orElseThrow());
+        treatments.add(treatmentCrudRepository.findById(5L).orElseThrow());
 
+        CompletedTreatment completedTreatment = new CompletedTreatment();
+
+        completedTreatment.setId(1L);
+        completedTreatment.setRequestTreatment(requestTreatmentJpaRepository.findById(2L).orElseThrow());
+        completedTreatment.setTreatments(treatments);
+        completedTreatment.setMakeAutoTreatment(false);
+
+    }
 }

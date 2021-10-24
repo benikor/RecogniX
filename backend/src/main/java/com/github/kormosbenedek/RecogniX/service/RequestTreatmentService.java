@@ -2,6 +2,7 @@ package com.github.kormosbenedek.RecogniX.service;
 
 import com.github.kormosbenedek.RecogniX.dto.SymptomWithCommentDto;
 import com.github.kormosbenedek.RecogniX.entity.*;
+import com.github.kormosbenedek.RecogniX.repositories.CompletedTreatmentCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.PatientCrudRepository;
 import com.github.kormosbenedek.RecogniX.repositories.RequestTreatmentJpaRepository;
 import com.github.kormosbenedek.RecogniX.repositories.SymptomWithCommentCrudRepository;
@@ -23,6 +24,7 @@ public class RequestTreatmentService {
     private final RequestTreatmentJpaRepository repository;
     private final PatientCrudRepository patientCrudRepository;
     private final SymptomWithCommentCrudRepository symptomWithCommentCrudRepository;
+    private final CompletedTreatmentCrudRepository completedTreatmentCrudRepository;
 
     public List<RequestTreatmentDto> getAll(){
 
@@ -81,5 +83,9 @@ public class RequestTreatmentService {
 
     public Patient getPatientId(Long id) {
         return repository.findById(id).orElseThrow().getPatient();
+    }
+
+    public List<Treatment> getTreatmentsById(Long id) {
+        return completedTreatmentCrudRepository.findById(id).orElseThrow().getTreatments();
     }
 }
