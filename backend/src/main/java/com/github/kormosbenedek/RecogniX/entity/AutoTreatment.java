@@ -16,18 +16,18 @@ public class AutoTreatment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @ManyToMany
     private List<Symptom> symptoms;
 
-    @OneToMany
+    @ManyToMany
     private List<Symptom> antisymptoms;
 
     private Integer minimumAge;
     private Integer maximumAge;
 
-    @OneToMany
+    @ManyToMany
     private List<Treatment> recommendedTreatments;
 
-    @OneToMany
+    @ManyToMany
     private List<Treatment> notRecommendedTreatments;
 }

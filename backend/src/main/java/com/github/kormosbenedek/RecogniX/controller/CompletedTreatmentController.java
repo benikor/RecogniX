@@ -17,8 +17,7 @@ public class CompletedTreatmentController {
 
     private final CompletedTreatmentService service;
     @PostMapping("")
-    public ResponseEntity<Void> complete(@RequestBody CompletedTreatment completedTreatment){
-        service.complete(completedTreatment);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<CompletedTreatment> complete(@RequestBody CompletedTreatment completedTreatment){
+        return new ResponseEntity<>(service.complete(completedTreatment),HttpStatus.OK);
     }
 }
