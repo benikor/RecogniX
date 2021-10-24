@@ -66,4 +66,15 @@ export class PatientComponent implements OnInit {
     console.log(this.dataToComment)
 
   }
+
+  onSubmint() {
+    console.log("Submit works")
+    
+
+
+    // this.heroService.addHero({name} as Hero)
+    // .subscribe(hero => {
+    //   this.heroes.push(hero);
+    // });
+  }
 }

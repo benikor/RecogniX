@@ -38,6 +38,16 @@ export class BackendHandlerService {
      )
   }
 
+  getRequestTreatmentByPatientId(id: number): Observable<any> {
+    return (this.http.get<any>(`${this.backendUrl}/requestTreatment/patientId/${id}`))
+    .pipe(
+       tap(_ => console.log('fetched RequestTreatmentByPatientId')),
+       catchError(this.handleError<any>('getRequestTreatmentByPatientId', []))
+     )
+  }
+
+
+
   getPatientById(id: number): Observable<any> {
     return (this.http.get<any>(`${this.backendUrl}/requestTreatment/${id}/patient`))
     .pipe(
@@ -62,7 +72,12 @@ export class BackendHandlerService {
      )
   }
 
-
+  // addHero(hero: Hero): Observable<any> {
+  //   return this.http.post(this.backendUrl, hero, this.httpOptions).pipe(
+  //     tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
+  //     catchError(this.handleError<any>('addHero'))
+  //   )
+  // }
   
 
   /**
