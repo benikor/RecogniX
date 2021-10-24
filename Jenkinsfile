@@ -45,6 +45,7 @@ pipeline {
 
           }
           steps {
+            sh 'cp frontend/src/environments/environment.deploy.ts frontend/src/environments/environment.ts'
             sh 'docker buildx build -t ${IMAGEREPO}/${FE_IMAGETAG} --platform linux/amd64 --push frontend/.'
             sh 'sed -i "s/FE_JENKINS_WILL_CHANGE_THIS_WHEN_REDEPLOY_NEEDED_BASED_ON_CHANGE/$(date)/" deployment/recognix_deployment.yaml'
           }
